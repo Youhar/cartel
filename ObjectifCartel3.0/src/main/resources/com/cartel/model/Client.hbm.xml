@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cartel.model">
+    <class name="Client" table="clients">
+        <id name="id" column="CLIENT_ID" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="nom" column="NOM" type="string" />
+        <property name="prenom" column="PRENOM" type="string" />
+        <property name="delegation" column="DELEGATION" type="string"/>
+        <property name="solde" column="SOLDE" type="big_decimal" precision="6" scale="2"/>
+        <property name="role" column="ROLE" type="string"/>
+    	<property name="photo" column="PHOTO" type="binary"/>
+    </class> 
+</hibernate-mapping>

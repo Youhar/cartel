@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cartel.model">
+    <class name="Conso" table="consos">
+        <id name="id" column="CONSO_ID" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="nom" column="NOM" type="string" />
+        <property name="prix" column="PRIX" type="big_decimal" precision="4" scale="2" />
+        <property name="type" column="TYPE" type="string"/>
+        <property name="photo" column="PHOTO" type="binary"/>
+    </class> 
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cartel.model">
+    <class name="Transaction" table="transactions">
+    <id name="id" type="integer" column="TRANSACTION_ID">
+        <generator class="native"/>
+    </id>
+    <discriminator column="TYPE" type="string"/>
+    <property name="dateTransaction" column="DATE"/>
+    <many-to-one name="client" column="CLIENTID" class="com.cartel.model.Client" lazy="false" />
+    <many-to-one name="operateur" column="OPERATEURID" class="com.cartel.model.Operateur" lazy="false"/>
+    <property name="canceled" column="STATUT" type="org.hibernate.type.YesNoType"/>
+    <property name="montant" column="MONTANT" type="big_decimal" precision="5" scale="2"/>
+    <subclass name="Debit" discriminator-value="DEBIT">
+        <property name="panier" column="PANIER" type="string"/>
+        <property name="bar" column="BAR"/>
+    </subclass>
+    <subclass name="Credit" discriminator-value="CREDIT">
+      	<property name="mode" column="cash" type="string"/>
+    </subclass>
+    <subclass name="TransactAdmin" discriminator-value="ADMIN">
+    <property name="addition" column="cash" type="org.hibernate.type.YesNoType"/>
+    </subclass>
+</class>
+</hibernate-mapping>
